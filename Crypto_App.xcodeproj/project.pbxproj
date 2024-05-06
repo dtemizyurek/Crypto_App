@@ -13,6 +13,9 @@
 		4556AB0C2BE2D09A00FE5425 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4556AB0A2BE2D09A00FE5425 /* Main.storyboard */; };
 		4556AB0E2BE2D09C00FE5425 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4556AB0D2BE2D09C00FE5425 /* Assets.xcassets */; };
 		4556AB112BE2D09C00FE5425 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4556AB0F2BE2D09C00FE5425 /* LaunchScreen.storyboard */; };
+		459015792BE97EC1000943AE /* CryptoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459015782BE97EC1000943AE /* CryptoRequest.swift */; };
+		4590157B2BE97F11000943AE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4590157A2BE97F11000943AE /* Constants.swift */; };
+		4590157D2BE97FC1000943AE /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4590157C2BE97FC1000943AE /* Crypto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		4556AB0D2BE2D09C00FE5425 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4556AB102BE2D09C00FE5425 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4556AB122BE2D09C00FE5425 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		459015782BE97EC1000943AE /* CryptoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoRequest.swift; sourceTree = "<group>"; };
+		4590157A2BE97F11000943AE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4590157C2BE97FC1000943AE /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,58 @@
 		4556AB032BE2D09A00FE5425 /* Crypto_App */ = {
 			isa = PBXGroup;
 			children = (
+				459015742BE975F8000943AE /* Model */,
+				459015752BE97609000943AE /* View */,
+				459015772BE97633000943AE /* View Controller */,
+				459015762BE9761B000943AE /* Cell */,
+				459015722BE975DA000943AE /* Network */,
 				4556AB042BE2D09A00FE5425 /* AppDelegate.swift */,
 				4556AB062BE2D09A00FE5425 /* SceneDelegate.swift */,
-				4556AB082BE2D09A00FE5425 /* ViewController.swift */,
-				4556AB0A2BE2D09A00FE5425 /* Main.storyboard */,
 				4556AB0D2BE2D09C00FE5425 /* Assets.xcassets */,
-				4556AB0F2BE2D09C00FE5425 /* LaunchScreen.storyboard */,
 				4556AB122BE2D09C00FE5425 /* Info.plist */,
 			);
 			path = Crypto_App;
+			sourceTree = "<group>";
+		};
+		459015722BE975DA000943AE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				459015782BE97EC1000943AE /* CryptoRequest.swift */,
+				4590157A2BE97F11000943AE /* Constants.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		459015742BE975F8000943AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4590157C2BE97FC1000943AE /* Crypto.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		459015752BE97609000943AE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4556AB0A2BE2D09A00FE5425 /* Main.storyboard */,
+				4556AB0F2BE2D09C00FE5425 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		459015762BE9761B000943AE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		459015772BE97633000943AE /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4556AB082BE2D09A00FE5425 /* ViewController.swift */,
+			);
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +187,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4590157D2BE97FC1000943AE /* Crypto.swift in Sources */,
+				4590157B2BE97F11000943AE /* Constants.swift in Sources */,
+				459015792BE97EC1000943AE /* CryptoRequest.swift in Sources */,
 				4556AB092BE2D09A00FE5425 /* ViewController.swift in Sources */,
 				4556AB052BE2D09A00FE5425 /* AppDelegate.swift in Sources */,
 				4556AB072BE2D09A00FE5425 /* SceneDelegate.swift in Sources */,
