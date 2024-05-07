@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CryptoCollectionViewCell: UICollectionViewCell {
+final class CryptoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var cryptoImage: UIImageView!
@@ -15,6 +15,8 @@ class CryptoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var changeLabel: UILabel!
+    
+    static let identifier = "CryptoCollectionViewCell"
     
     private func configure(with cryptoModel: Crypto) {
         shortNameLabel.text = cryptoModel.data.coins[0].symbol
@@ -26,6 +28,19 @@ class CryptoCollectionViewCell: UICollectionViewCell {
             cryptoImage.load(from: iconURL)
         } else {
             cryptoImage.image = UIImage(systemName: "person.fill")
+        }
+        decideChangeColor(label: changeLabel)
+    }
+    
+    public func decideChangeColor (label: UILabel) {
+        guard let change = label.text?.hasPrefix("-") else {
+            return
+        }
+        
+        if change {
+            changeLabel.textColor = .systemRed
+        } else {
+            changeLabel.textColor = .systemGreen
         }
     }
 
