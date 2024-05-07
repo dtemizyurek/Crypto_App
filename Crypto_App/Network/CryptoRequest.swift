@@ -33,6 +33,7 @@ struct CryptoRequest {
                 do {
                     let result = try JSONDecoder().decode(Crypto.self, from: data)
                     completion(.success(result.data.coins))
+                    print(result)
                 } catch {
                     completion(.failure(error))
                 }
