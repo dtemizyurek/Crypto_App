@@ -21,6 +21,8 @@
 		45B858792BEAD0C200A6FB4D /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B858782BEAD0C200A6FB4D /* ImageExtension.swift */; };
 		45E333C42BEC0A7400A2BABE /* CryptoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E333C32BEC0A7400A2BABE /* CryptoModel.swift */; };
 		45E333C62BEC0DE600A2BABE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E333C52BEC0DE600A2BABE /* StringExtension.swift */; };
+		45E333C92BEC2A5400A2BABE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E333C72BEC2A5400A2BABE /* DetailViewController.swift */; };
+		45E333CA2BEC2A5400A2BABE /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E333C82BEC2A5400A2BABE /* DetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		45B858782BEAD0C200A6FB4D /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		45E333C32BEC0A7400A2BABE /* CryptoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoModel.swift; sourceTree = "<group>"; };
 		45E333C52BEC0DE600A2BABE /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		45E333C72BEC2A5400A2BABE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		45E333C82BEC2A5400A2BABE /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				4556AB0A2BE2D09A00FE5425 /* Main.storyboard */,
+				45E333C82BEC2A5400A2BABE /* DetailViewController.xib */,
 				4556AB0F2BE2D09C00FE5425 /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -134,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				4556AB082BE2D09A00FE5425 /* ViewController.swift */,
+				45E333C72BEC2A5400A2BABE /* DetailViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -207,6 +213,7 @@
 			files = (
 				4556AB112BE2D09C00FE5425 /* LaunchScreen.storyboard in Resources */,
 				45B858762BEACCF000A6FB4D /* CryptoCollectionViewCell.xib in Resources */,
+				45E333CA2BEC2A5400A2BABE /* DetailViewController.xib in Resources */,
 				4556AB0E2BE2D09C00FE5425 /* Assets.xcassets in Resources */,
 				4556AB0C2BE2D09A00FE5425 /* Main.storyboard in Resources */,
 			);
@@ -219,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45E333C92BEC2A5400A2BABE /* DetailViewController.swift in Sources */,
 				45B858792BEAD0C200A6FB4D /* ImageExtension.swift in Sources */,
 				45B858752BEACCF000A6FB4D /* CryptoCollectionViewCell.swift in Sources */,
 				45E333C62BEC0DE600A2BABE /* StringExtension.swift in Sources */,
