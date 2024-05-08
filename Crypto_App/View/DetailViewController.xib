@@ -10,6 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="Crypto_App" customModuleProvider="target">
             <connections>
+                <outlet property="cryptoChange" destination="fCX-aT-kaA" id="yRO-MM-suh"/>
+                <outlet property="cryptoPrice" destination="KEQ-yI-sCp" id="pQl-D0-MS8"/>
+                <outlet property="highPrice" destination="tri-cT-8zr" id="aSL-gc-duq"/>
+                <outlet property="lowPrice" destination="kNI-Rb-ht9" id="Tur-We-YBq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,18 +29,18 @@
                             <rect key="frame" x="0.0" y="0.0" width="180" height="220"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="4sW-uf-M4t">
-                                    <rect key="frame" x="8" y="48.333333333333314" width="85.666666666666671" height="123.66666666666669"/>
+                                    <rect key="frame" x="8" y="48.333333333333314" width="92.333333333333329" height="123.66666666666669"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCg-nL-zBg">
-                                            <rect key="frame" x="0.0" y="0.0" width="85.666666666666671" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <nil key="textColor"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="92.333333333333329" height="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEQ-yI-sCp">
                                             <rect key="frame" x="0.0" y="50" width="41.333333333333336" height="20.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCX-aT-kaA">
@@ -48,7 +52,7 @@
                                     </subviews>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemGrayColor"/>
+                            <color key="backgroundColor" systemColor="systemGray5Color"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQK-qC-jOe" userLabel="High-Low Price View">
                             <rect key="frame" x="195" y="0.0" width="182" height="220"/>
@@ -71,7 +75,7 @@
                                     </subviews>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemGrayColor"/>
+                            <color key="backgroundColor" systemColor="systemGray5Color"/>
                         </view>
                     </subviews>
                     <constraints>
@@ -79,36 +83,13 @@
                         <constraint firstItem="qQK-qC-jOe" firstAttribute="leading" secondItem="wBh-v6-ccr" secondAttribute="leading" constant="195" id="iiC-cX-Ygb"/>
                     </constraints>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Historical Prices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFi-da-94L">
-                    <rect key="frame" x="0.0" y="335" width="393" height="36"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="F8S-id-DYI">
-                    <rect key="frame" x="0.0" y="379" width="393" height="439"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cib-kB-uxI">
-                        <size key="itemSize" width="128" height="128"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KFi-da-94L" secondAttribute="trailing" id="5gU-T5-LMm"/>
-                <constraint firstItem="F8S-id-DYI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="81X-kS-Adm"/>
                 <constraint firstItem="wBh-v6-ccr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="8bY-0Q-Enf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wBh-v6-ccr" secondAttribute="trailing" constant="8" id="8sH-HZ-dod"/>
-                <constraint firstItem="KFi-da-94L" firstAttribute="top" secondItem="wBh-v6-ccr" secondAttribute="bottom" constant="8" id="Loi-oc-79N"/>
                 <constraint firstItem="wBh-v6-ccr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="48" id="aGl-Qc-V64"/>
-                <constraint firstItem="KFi-da-94L" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hDA-AW-Kvg"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="F8S-id-DYI" secondAttribute="trailing" id="kBP-V3-YYZ"/>
-                <constraint firstItem="F8S-id-DYI" firstAttribute="top" secondItem="KFi-da-94L" secondAttribute="bottom" constant="8" id="mGr-UJ-aeC"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="F8S-id-DYI" secondAttribute="bottom" id="q9m-wd-mtr"/>
             </constraints>
             <point key="canvasLocation" x="-28.244274809160306" y="-11.267605633802818"/>
         </view>
@@ -117,8 +98,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -7,23 +7,19 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-
+final class DetailViewController: UIViewController {
+    
+//MARK: - IBOutlets
+    @IBOutlet private weak var cryptoPrice: UILabel!
+    @IBOutlet private weak var cryptoChange: UILabel!
+    @IBOutlet private weak var highPrice: UILabel!
+    @IBOutlet private weak var lowPrice: UILabel!
+//MARK: - Variables
+    var cryptoModel: CryptoModel!
+    var highestPrice: Float?
+    var lowestPrice: Float?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

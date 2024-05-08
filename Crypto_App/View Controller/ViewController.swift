@@ -16,7 +16,6 @@ final class ViewController: UIViewController {
     var cryptos = [CryptoModel]() {
         didSet {
             DispatchQueue.main.async {
-                print(self.cryptos.count)
                 self.collectionView.reloadData()
             }
         }
