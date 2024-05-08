@@ -8,7 +8,7 @@
 import UIKit
 
 final class CryptoCollectionViewCell: UICollectionViewCell {
-    
+    //MARK: - IBOutlets
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var cryptoImage: UIImageView!
     @IBOutlet weak var shortNameLabel: UILabel!
@@ -16,18 +16,34 @@ final class CryptoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var changeLabel: UILabel!
     
+    //MARK: - Variables
     static let identifier = "CryptoCollectionViewCell"
     
-    private func configure(with cryptoModel: Crypto) {
-        shortNameLabel.text = cryptoModel.data.coins[0].symbol
-        nameLabel.text = cryptoModel.data.coins[0].name
-        priceLabel.text = cryptoModel.data.coins[0].price
-        changeLabel.text = cryptoModel.data.coins[0].change
+    //MARK: - Awake From Nib
+    override func awakeFromNib() {
+    super.awakeFromNib()
+        customizeView()
+    }
+    
+    //MARK: - Private functions
+    public func configure(with cryptoModel: CryptoModel) {
+        shortNameLabel.text = cryptoModel.symbol
+        nameLabel.text = cryptoModel.name
+        priceLabel.text = cryptoModel.price
+        changeLabel.text = cryptoModel.change
         
-        if let iconURL = URL(string: cryptoModel.data.coins[0].iconURL) {
-            cryptoImage.load(from: iconURL)
-        } else {
-            cryptoImage.image = UIImage(systemName: "person.fill")
+        if let data = cryptoModel.imageData {
+            cryptoImage.image = UIImage(data: data)
+        }
+        else if let url = cryptoModel.iconURL {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                guard let data = data, error == nil else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.cryptoImage.image = UIImage(data: data)
+                }
+            }.resume()
         }
         decideChangeColor(label: changeLabel)
     }
@@ -43,5 +59,10 @@ final class CryptoCollectionViewCell: UICollectionViewCell {
             changeLabel.textColor = .systemGreen
         }
     }
-
+    
+    private func customizeView() {
+        
+        view.layer.cornerRadius = 10
+        view.layer.masksToBounds = true
+    }
 }

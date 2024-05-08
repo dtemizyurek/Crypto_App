@@ -19,8 +19,8 @@
 		45B858752BEACCF000A6FB4D /* CryptoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B858732BEACCF000A6FB4D /* CryptoCollectionViewCell.swift */; };
 		45B858762BEACCF000A6FB4D /* CryptoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45B858742BEACCF000A6FB4D /* CryptoCollectionViewCell.xib */; };
 		45B858792BEAD0C200A6FB4D /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B858782BEAD0C200A6FB4D /* ImageExtension.swift */; };
-		45B8587C2BEAD49F00A6FB4D /* CryptoReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B8587A2BEAD49F00A6FB4D /* CryptoReusableView.swift */; };
-		45B8587D2BEAD49F00A6FB4D /* CryptoReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45B8587B2BEAD49F00A6FB4D /* CryptoReusableView.xib */; };
+		45E333C42BEC0A7400A2BABE /* CryptoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E333C32BEC0A7400A2BABE /* CryptoModel.swift */; };
+		45E333C62BEC0DE600A2BABE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E333C52BEC0DE600A2BABE /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +38,8 @@
 		45B858732BEACCF000A6FB4D /* CryptoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCollectionViewCell.swift; sourceTree = "<group>"; };
 		45B858742BEACCF000A6FB4D /* CryptoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CryptoCollectionViewCell.xib; sourceTree = "<group>"; };
 		45B858782BEAD0C200A6FB4D /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
-		45B8587A2BEAD49F00A6FB4D /* CryptoReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoReusableView.swift; sourceTree = "<group>"; };
-		45B8587B2BEAD49F00A6FB4D /* CryptoReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CryptoReusableView.xib; sourceTree = "<group>"; };
+		45E333C32BEC0A7400A2BABE /* CryptoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoModel.swift; sourceTree = "<group>"; };
+		45E333C52BEC0DE600A2BABE /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +58,6 @@
 			children = (
 				45B858732BEACCF000A6FB4D /* CryptoCollectionViewCell.swift */,
 				45B858742BEACCF000A6FB4D /* CryptoCollectionViewCell.xib */,
-				45B8587A2BEAD49F00A6FB4D /* CryptoReusableView.swift */,
-				45B8587B2BEAD49F00A6FB4D /* CryptoReusableView.xib */,
 			);
 			path = CryptoList;
 			sourceTree = "<group>";
@@ -110,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				4590157C2BE97FC1000943AE /* Crypto.swift */,
+				45E333C32BEC0A7400A2BABE /* CryptoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -143,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				45B858782BEAD0C200A6FB4D /* ImageExtension.swift */,
+				45E333C52BEC0DE600A2BABE /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -208,7 +208,6 @@
 				4556AB112BE2D09C00FE5425 /* LaunchScreen.storyboard in Resources */,
 				45B858762BEACCF000A6FB4D /* CryptoCollectionViewCell.xib in Resources */,
 				4556AB0E2BE2D09C00FE5425 /* Assets.xcassets in Resources */,
-				45B8587D2BEAD49F00A6FB4D /* CryptoReusableView.xib in Resources */,
 				4556AB0C2BE2D09A00FE5425 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,8 +221,9 @@
 			files = (
 				45B858792BEAD0C200A6FB4D /* ImageExtension.swift in Sources */,
 				45B858752BEACCF000A6FB4D /* CryptoCollectionViewCell.swift in Sources */,
+				45E333C62BEC0DE600A2BABE /* StringExtension.swift in Sources */,
 				4590157D2BE97FC1000943AE /* Crypto.swift in Sources */,
-				45B8587C2BEAD49F00A6FB4D /* CryptoReusableView.swift in Sources */,
+				45E333C42BEC0A7400A2BABE /* CryptoModel.swift in Sources */,
 				4590157B2BE97F11000943AE /* Constants.swift in Sources */,
 				459015792BE97EC1000943AE /* CryptoRequest.swift in Sources */,
 				4556AB092BE2D09A00FE5425 /* ViewController.swift in Sources */,
