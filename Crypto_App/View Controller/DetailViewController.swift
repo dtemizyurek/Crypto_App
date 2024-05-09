@@ -10,12 +10,14 @@ import UIKit
 final class DetailViewController: UIViewController {
     
     //MARK: - IBOutlets
+    @IBOutlet private weak var cryptoNameLabel: UILabel!
     @IBOutlet private weak var cryptoPrice: UILabel!
     @IBOutlet private weak var cryptoChange: UILabel!
     @IBOutlet private weak var highPriceLabel: UILabel!
     @IBOutlet private weak var lowPriceLabel: UILabel!
     @IBOutlet private weak var currentPriceView: UIView!
     @IBOutlet private weak var highLowView: UIView!
+    @IBOutlet private weak var cryptoImage: UIImageView!
     
     //MARK: - private Variables
     var cryptoModel: CryptoModel!
@@ -32,8 +34,13 @@ final class DetailViewController: UIViewController {
     
     //MARK: - Private Functions
     private func updateLabels(with cryptoModel: CryptoModel) {
+        cryptoNameLabel.text = cryptoModel.name
         cryptoPrice.text = cryptoModel.price
         cryptoChange.text = cryptoModel.change
+        
+        if let data = cryptoModel.imageData {
+            cryptoImage.image = UIImage(data: data)
+        }
         
         guard let changeText = cryptoChange.text else { return }
         if changeText.hasPrefix("-") {
