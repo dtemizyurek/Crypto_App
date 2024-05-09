@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Ranking List-->
+        <!--Markets-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Crypto_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,8 +17,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3G2-8C-iok">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
-                                <color key="backgroundColor" red="0.29753929379999999" green="0.74188864229999996" blue="0.94685059790000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="171" width="393" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="amf-w9-B55">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -31,28 +31,44 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="gDl-0X-6Er"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qew-8q-yu6">
+                                <rect key="frame" x="0.0" y="103" width="393" height="60"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dMc-DA-JKI">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CmI-5h-eBk">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="dMc-DA-JKI" secondAttribute="bottom" id="Hyc-nl-Dn9"/>
+                                    <constraint firstItem="dMc-DA-JKI" firstAttribute="top" secondItem="Qew-8q-yu6" secondAttribute="top" id="OUi-LC-o31"/>
+                                    <constraint firstAttribute="trailing" secondItem="dMc-DA-JKI" secondAttribute="trailing" id="VUY-nI-AsC"/>
+                                    <constraint firstAttribute="height" constant="60" id="iUP-VR-hJ6"/>
+                                    <constraint firstItem="dMc-DA-JKI" firstAttribute="leading" secondItem="Qew-8q-yu6" secondAttribute="leading" id="rZi-Yw-cNX"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="3G2-8C-iok" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Grq-fF-Gxy"/>
-                            <constraint firstItem="3G2-8C-iok" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qiT-xv-gdF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3G2-8C-iok" secondAttribute="bottom" id="uOP-ga-iaD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3G2-8C-iok" secondAttribute="trailing" id="zji-4N-QXP"/>
+                            <constraint firstItem="Qew-8q-yu6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="D0b-by-j15"/>
+                            <constraint firstItem="Qew-8q-yu6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="QEY-Se-Mq6"/>
+                            <constraint firstItem="3G2-8C-iok" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="RBN-2V-rbq"/>
+                            <constraint firstItem="Qew-8q-yu6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XYF-lH-8Fe"/>
+                            <constraint firstItem="3G2-8C-iok" firstAttribute="top" secondItem="Qew-8q-yu6" secondAttribute="bottom" constant="8" id="eTI-9z-y7r"/>
+                            <constraint firstItem="3G2-8C-iok" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="f9z-oY-zji"/>
+                            <constraint firstItem="3G2-8C-iok" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vUx-H1-YKD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Ranking List" id="kbJ-Cg-8ac">
-                        <barButtonItem key="rightBarButtonItem" id="Xpt-5I-eNB">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="IWa-jt-3Y3">
-                                <rect key="frame" x="290" y="5" width="87" height="34.333333333333336"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.29753929379999999" green="0.74188864229999996" blue="0.94685059790000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="list.bullet.clipboard.fill" catalog="system"/>
-                            </button>
-                            <color key="tintColor" red="0.29753929379999999" green="0.74188864229999996" blue="0.94685059790000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Markets" id="kbJ-Cg-8ac"/>
                     <connections>
                         <outlet property="collectionView" destination="3G2-8C-iok" id="het-K1-8qc"/>
                     </connections>
@@ -69,6 +85,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="O5l-2B-n1v">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" systemColor="systemYellowColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -81,9 +101,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="list.bullet.clipboard.fill" catalog="system" width="98" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
