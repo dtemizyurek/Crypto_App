@@ -33,13 +33,24 @@ struct CryptoRequest {
                 do {
                     let result = try JSONDecoder().decode(Crypto.self, from: data)
                     completion(.success(result.data.coins))
-                    print(result)
                 } catch {
                     completion(.failure(error))
                 }
             }
         }
         
+        task.resume()
+    }
+    
+    func getImageData(from url: URL, completion: @escaping (Data?) -> Void) {
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil else {
+                print("Failed to fetch image data:", error?.localizedDescription ?? "Unknown error")
+                completion(nil)
+                return
+            }
+            completion(data)
+        }
         task.resume()
     }
 }

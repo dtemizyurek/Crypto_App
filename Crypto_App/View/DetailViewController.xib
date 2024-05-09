@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="Crypto_App" customModuleProvider="target">
             <connections>
                 <outlet property="cryptoChange" destination="fCX-aT-kaA" id="yRO-MM-suh"/>
+                <outlet property="cryptoChangeImage" destination="Cy2-2B-p6P" id="CG6-An-d8p"/>
                 <outlet property="cryptoImage" destination="kYK-2Q-c1F" id="Jdm-tV-KqB"/>
                 <outlet property="cryptoNameLabel" destination="LCg-nL-zBg" id="l7P-Qn-vfg"/>
                 <outlet property="cryptoPrice" destination="KEQ-yI-sCp" id="pQl-D0-MS8"/>
@@ -36,7 +37,7 @@
                                     <rect key="frame" x="8" y="8" width="361" height="105"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yec-3a-E5w">
-                                            <rect key="frame" x="0.0" y="0.0" width="192.33333333333334" height="105"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="162" height="105"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCg-nL-zBg">
                                                     <rect key="frame" x="0.0" y="0.0" width="101.33333333333333" height="31.666666666666668"/>
@@ -68,8 +69,12 @@
                                             </subviews>
                                         </stackView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoinsign.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kYK-2Q-c1F">
-                                            <rect key="frame" x="341.33333333333331" y="43.333333333333329" width="19.666666666666686" height="19"/>
+                                            <rect key="frame" x="311" y="28.666666666666671" width="50" height="48.666666666666671"/>
                                             <color key="tintColor" red="0.96862745289999996" green="0.79607844350000001" blue="0.270588249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="atI-bj-V7K"/>
+                                                <constraint firstAttribute="width" constant="50" id="iWu-z0-Xkj"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                 </stackView>

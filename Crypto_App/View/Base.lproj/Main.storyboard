@@ -70,7 +70,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Markets" id="kbJ-Cg-8ac"/>
                     <connections>
-                        <outlet property="collectionView" destination="3G2-8C-iok" id="het-K1-8qc"/>
+                        <outlet property="listCollectionView" destination="3G2-8C-iok" id="het-K1-8qc"/>
+                        <outlet property="sortingCollectionView" destination="dMc-DA-JKI" id="Jne-rc-zFT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

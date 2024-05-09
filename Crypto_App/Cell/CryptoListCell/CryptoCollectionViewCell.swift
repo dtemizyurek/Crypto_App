@@ -9,12 +9,12 @@ import UIKit
 
 final class CryptoCollectionViewCell: UICollectionViewCell {
     //MARK: - IBOutlets
-    @IBOutlet weak var view: UIView!
-    @IBOutlet weak var cryptoImage: UIImageView!
-    @IBOutlet weak var cryptoShortName: UILabel!
-    @IBOutlet weak var cryptoName: UILabel!
-    @IBOutlet weak var cryptoPrice: UILabel!
-    @IBOutlet weak var cryptoChange: UILabel!
+    @IBOutlet private weak var view: UIView!
+    @IBOutlet private weak var cryptoImage: UIImageView!
+    @IBOutlet private weak var cryptoShortName: UILabel!
+    @IBOutlet private weak var cryptoName: UILabel!
+    @IBOutlet private weak var cryptoPrice: UILabel!
+    @IBOutlet private weak var cryptoChange: UILabel!
     
     //MARK: - Variables
     static let identifier = "CryptoCollectionViewCell"

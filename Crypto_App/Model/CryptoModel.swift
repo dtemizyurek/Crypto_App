@@ -8,11 +8,11 @@
 import Foundation
 
 struct CryptoModel {
-    let symbol: String
-    let name: String
+    var symbol: String
+    var name: String
     var iconURL: URL?
     var imageData: Data?
-    let price: String
-    let change: String
+    var price: String
+    var change: String
     var sparkLines: [String]?
 }
