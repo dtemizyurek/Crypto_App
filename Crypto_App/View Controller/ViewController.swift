@@ -8,7 +8,7 @@
 import UIKit
 
 final class ViewController: UIViewController {
-
+    
     //MARK: - IBOutlets
     @IBOutlet private weak var collectionView: UICollectionView!
     
@@ -40,10 +40,10 @@ final class ViewController: UIViewController {
                 self.cryptos = cryptoss.compactMap({
                     CryptoModel(symbol: $0.symbol, name: $0.name, iconURL: URL(string: $0.iconURL.replacingOccurrences(of: "svg", with: "png")), price: "$\($0.price.components(separatedBy: ".")[0]).\($0.price.components(separatedBy: ".")[1][0..<3])", change: $0.change + "%", sparkLines: $0.sparkline)
                 })
-            break
+                break
             case .failure(let error):
                 print(error)
-            break
+                break
             }
         }
     }
@@ -60,7 +60,7 @@ extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource,UI
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CryptoCollectionViewCell.identifier, for: indexPath) as? CryptoCollectionViewCell else { return .init() }
         
         cell.configure(with: cryptos[indexPath.row])
-
+        
         return cell
     }
     
@@ -73,6 +73,12 @@ extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource,UI
         let cellHeight: CGFloat = 125
         
         return CGSize(width: cellWidth, height: cellHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        detailVC.cryptoModel = cryptos[indexPath.item]
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
