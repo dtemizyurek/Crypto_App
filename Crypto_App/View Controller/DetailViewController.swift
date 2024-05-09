@@ -64,7 +64,6 @@ final class DetailViewController: UIViewController {
     
     private func findHighestLowestPrices() {
         guard let sparkLines = cryptoModel.sparkLines else {
-            print("SparkLines is nil")
             return
         }
         
@@ -85,12 +84,10 @@ final class DetailViewController: UIViewController {
             highPriceLabel.text = "High: \(highestPrice ?? 0)"
             highPriceLabel.textColor = .systemGreen
             lowPriceLabel.text = "Low: \(lowestPrice ?? 0)"
-            lowPriceLabel.textColor = .systemRed 
+            lowPriceLabel.textColor = .systemRed
         } else {
             print("One of the labels is nil.")
         }
     }
-    
-    
 }
 

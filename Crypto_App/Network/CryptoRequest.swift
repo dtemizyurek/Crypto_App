@@ -42,7 +42,7 @@ struct CryptoRequest {
         task.resume()
     }
     
-    func getImageData(from url: URL, completion: @escaping (Data?) -> Void) {
+   public func getImageData(from url: URL, completion: @escaping (Data?) -> Void) {
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("Failed to fetch image data:", error?.localizedDescription ?? "Unknown error")
@@ -53,5 +53,38 @@ struct CryptoRequest {
         }
         task.resume()
     }
+    
+   public func getStats(completion: @escaping (Result<[Stats], Error>) -> Void) {
+       guard let url = Constants.topHeadLinesURL else {
+              completion(.failure(NSError(domain: "CryptoRequest", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
+              return
+          }
+          
+          let task = URLSession.shared.dataTask(with: url) { data, response, error in
+              if let error = error {
+                  completion(.failure(error))
+                  return
+              }
+              
+              guard let httpResponse = response as? HTTPURLResponse,
+                    (200...299).contains(httpResponse.statusCode) else {
+                  completion(.failure(NSError(domain: "CryptoRequest", code: 0, userInfo: [NSLocalizedDescriptionKey: "Server error"])))
+                  return
+              }
+              
+              if let data = data {
+                  do {
+                      let result = try JSONDecoder().decode([Stats].self, from: data)
+                      completion(.success(result))
+                  } catch {
+                      completion(.failure(error))
+                  }
+              }
+          }
+          
+          task.resume()
+      }
+
 }
+
 

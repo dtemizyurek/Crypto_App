@@ -22,6 +22,8 @@ final class ViewController: UIViewController {
         }
     }
     
+    private var statsModel = [StatusModel]()
+    
     //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +34,12 @@ final class ViewController: UIViewController {
     //MARK: - Private functions
     private func nibRegister() {
         listCollectionView.register(UINib(nibName: CryptoCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: CryptoCollectionViewCell.identifier)
+        sortingCollectionView.register(UINib(nibName: SortingCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: SortingCollectionViewCell.identifier)
     }
     
     private func getAllData() {
-        CryptoRequest.shared.getAllData { result in
+        CryptoRequest.shared.getAllData { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let cryptos):
                 let cryptoModels = cryptos.compactMap { crypto -> CryptoModel? in
@@ -47,7 +51,7 @@ final class ViewController: UIViewController {
                         if let data = try? Data(contentsOf: iconURL) {
                             DispatchQueue.main.async {
                                 cryptoModel.imageData = data
-                                self.listCollectionView.reloadData() // Reload collection view after image data is fetched
+                                self.listCollectionView.reloadData()
                             }
                         }
                     }
@@ -56,52 +60,68 @@ final class ViewController: UIViewController {
                 }
                 self.cryptoModel = cryptoModels
             case .failure(let error):
-                print(error) // TODO: Display error message to user
+                print(error) // TODO: Handle
             }
         }
     }
-
+    
 }
-
-//MARK: - CollectionView Extension
-extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        cryptoModel.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CryptoCollectionViewCell.identifier, for: indexPath) as? CryptoCollectionViewCell else { return .init() }
-        cell.configure(with: cryptoModel[indexPath.row])
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth: CGFloat = collectionView.frame.width
-        let cellHeight: CGFloat = 125
-        return CGSize(width: cellWidth, height: cellHeight)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC = DetailViewController()
-        detailVC.cryptoModel = cryptoModel[indexPath.item]
+    //MARK: - CollectionView Extension
+    extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
         
-        // Fetch image data if not available
-        if detailVC.cryptoModel.imageData == nil {
-            CryptoRequest.shared.getImageData(from: detailVC.cryptoModel.iconURL!) { imageData in
-                detailVC.cryptoModel.imageData = imageData
-                DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(detailVC, animated: true)
-                }
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            switch collectionView {
+            case listCollectionView:
+                return cryptoModel.count
+            case sortingCollectionView:
+                return statsModel.count
+                
+            default:
+                return 0
             }
-        } else {
-            navigationController?.pushViewController(detailVC, animated: true)
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            switch collectionView {
+            case listCollectionView:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CryptoCollectionViewCell.identifier, for: indexPath) as? CryptoCollectionViewCell else { return .init() }
+                cell.configure(with: cryptoModel[indexPath.row])
+                return cell
+                
+            case sortingCollectionView:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SortingCollectionViewCell.identifier, for: indexPath) as? SortingCollectionViewCell else { return .init()}
+                cell.isUserInteractionEnabled = true
+                cell.configure(with: statsModel[indexPath.row])
+                return cell
+            default:
+                return UICollectionViewCell()
+            }
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let cellWidth: CGFloat = collectionView.frame.width
+            let cellHeight: CGFloat = 125
+            return CGSize(width: cellWidth, height: cellHeight)
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            let detailVC = DetailViewController()
+            detailVC.cryptoModel = cryptoModel[indexPath.item]
+            if detailVC.cryptoModel.imageData == nil {
+                CryptoRequest.shared.getImageData(from: detailVC.cryptoModel.iconURL!) { imageData in
+                    detailVC.cryptoModel.imageData = imageData
+                    DispatchQueue.main.async {
+                        self.navigationController?.pushViewController(detailVC, animated: true)
+                    }
+                }
+            } else {
+                navigationController?.pushViewController(detailVC, animated: true)
+            }
         }
     }
-
-}
+    
 
