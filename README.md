@@ -30,4 +30,4 @@ This project includes a basic iOS screen for a cryptocurrency app. The app displ
 
 ## Videos
 
-/Users/dogukantemizyurek/Desktop/Ekran Kaydı 2024-05-10 14.03.18.mov
+https://github.com/dtemizyurek/Crypto_App/assets/52003954/2294746b-df76-4d10-b2a0-e00954570b99
