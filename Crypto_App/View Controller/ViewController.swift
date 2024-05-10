@@ -30,6 +30,7 @@ final class ViewController: UIViewController {
         nibRegister()
         getAllData()
         setupFilterMenu()
+        navigationController?.navigationBar.tintColor = UIColor(red: 208/255, green: 144/255 , blue: 51/255, alpha: 1)
     }
     
     //MARK: - Private functions
