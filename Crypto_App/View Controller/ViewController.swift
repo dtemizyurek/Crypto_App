@@ -11,7 +11,7 @@ final class ViewController: UIViewController {
     
     //MARK: - IBOutlets
     @IBOutlet private weak var listCollectionView: UICollectionView!
-    @IBOutlet private weak var sortingCollectionView: UICollectionView!
+    @IBOutlet private weak var filterButton: UIButton!
     
     //MARK: - Variables
     private var cryptoModel = [CryptoModel]() {
@@ -22,19 +22,19 @@ final class ViewController: UIViewController {
         }
     }
     
-    private var statsModel = [StatusModel]()
+
     
     //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         nibRegister()
         getAllData()
+        setupFilterMenu()
     }
     
     //MARK: - Private functions
     private func nibRegister() {
         listCollectionView.register(UINib(nibName: CryptoCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: CryptoCollectionViewCell.identifier)
-        sortingCollectionView.register(UINib(nibName: SortingCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: SortingCollectionViewCell.identifier)
     }
     
     private func getAllData() {
@@ -44,9 +44,19 @@ final class ViewController: UIViewController {
             case .success(let cryptos):
                 let cryptoModels = cryptos.compactMap { crypto -> CryptoModel? in
                     guard let iconURL = URL(string: crypto.iconURL.replacingOccurrences(of: "svg", with: "png")) else { return nil }
-                    var cryptoModel = CryptoModel(symbol: crypto.symbol, name: crypto.name, iconURL: iconURL, price: "$\(crypto.price.components(separatedBy: ".")[0]).\(crypto.price.components(separatedBy: ".")[1][0..<3])", change: crypto.change + "%", sparkLines: crypto.sparkline)
+                    var cryptoModel = CryptoModel(
+                        symbol: crypto.symbol,
+                        name: crypto.name,
+                        iconURL: iconURL,
+                        imageData: nil,
+                        price: "$\(crypto.price.components(separatedBy: ".")[0]).\(crypto.price.components(separatedBy: ".")[1][0..<3])",
+                        change: crypto.change + "%",
+                        marketCap: crypto.marketCap,
+                        the24HVolume: crypto.the24HVolume,
+                        listedAt: Date(),
+                        sparkLines: crypto.sparkline
+                    )
                     
-                    // Fetch image data
                     DispatchQueue.global().async {
                         if let data = try? Data(contentsOf: iconURL) {
                             DispatchQueue.main.async {
@@ -55,73 +65,90 @@ final class ViewController: UIViewController {
                             }
                         }
                     }
-                    
                     return cryptoModel
                 }
                 self.cryptoModel = cryptoModels
             case .failure(let error):
-                print(error) // TODO: Handle
+                print(error)
             }
         }
     }
+
     
+    private func setupFilterMenu() {
+        filterButton.showsMenuAsPrimaryAction = true
+
+        let priceAction = UIAction(title: "Price") { [weak self] _ in
+            self?.sortCryptoModel(by: \.price)
+        }
+        
+        let marketCapAction = UIAction(title: "MarketCap") { [weak self] _ in
+            self?.sortCryptoModel(by: \.marketCap)
+        }
+        
+        let volumeAction = UIAction(title: "24h Volume") { [weak self] _ in
+            self?.sortCryptoModel(by: \.the24HVolume)
+        }
+        
+        let changeAction = UIAction(title: "Change") { [weak self] _ in
+            self?.sortCryptoModel(by: \.change)
+        }
+        
+        let listedAtAction = UIAction(title: "ListedAt") { [weak self] _ in
+            self?.sortCryptoModel(by: \.listedAt)
+        }
+        
+        filterButton.menu = UIMenu(title: "Filter", children: [priceAction, marketCapAction, volumeAction, changeAction, listedAtAction])
+    }
+
+    private func sortCryptoModel<T: Comparable>(by keyPath: KeyPath<CryptoModel, T>) {
+        cryptoModel.sort { $0[keyPath: keyPath] < $1[keyPath: keyPath] }
+        listCollectionView.reloadData()
+    }
+    @IBAction func filterMenuAction(_ sender: Any) {
+        self.cryptoModel.sort { $0.price < $1.price }
+        listCollectionView.reloadData()
+    }
 }
-    //MARK: - CollectionView Extension
-    extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-        
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            switch collectionView {
-            case listCollectionView:
-                return cryptoModel.count
-            case sortingCollectionView:
-                return statsModel.count
+            
+            //MARK: - CollectionView Extension
+            extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
                 
-            default:
-                return 0
-            }
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            switch collectionView {
-            case listCollectionView:
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CryptoCollectionViewCell.identifier, for: indexPath) as? CryptoCollectionViewCell else { return .init() }
-                cell.configure(with: cryptoModel[indexPath.row])
-                return cell
+                func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+                    return cryptoModel.count
+                }
                 
-            case sortingCollectionView:
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SortingCollectionViewCell.identifier, for: indexPath) as? SortingCollectionViewCell else { return .init()}
-                cell.isUserInteractionEnabled = true
-                cell.configure(with: statsModel[indexPath.row])
-                return cell
-            default:
-                return UICollectionViewCell()
-            }
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let cellWidth: CGFloat = collectionView.frame.width
-            let cellHeight: CGFloat = 125
-            return CGSize(width: cellWidth, height: cellHeight)
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            let detailVC = DetailViewController()
-            detailVC.cryptoModel = cryptoModel[indexPath.item]
-            if detailVC.cryptoModel.imageData == nil {
-                CryptoRequest.shared.getImageData(from: detailVC.cryptoModel.iconURL!) { imageData in
-                    detailVC.cryptoModel.imageData = imageData
-                    DispatchQueue.main.async {
-                        self.navigationController?.pushViewController(detailVC, animated: true)
+                func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+                    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CryptoCollectionViewCell.identifier, for: indexPath) as? CryptoCollectionViewCell else { return .init() }
+                    cell.configure(with: cryptoModel[indexPath.row])
+                    return cell
+                    
+                }
+                
+                func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+                    UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+                }
+                
+                func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+                    let cellWidth: CGFloat = collectionView.frame.width
+                    let cellHeight: CGFloat = 125
+                    return CGSize(width: cellWidth, height: cellHeight)
+                }
+                
+                func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+                    let detailVC = DetailViewController()
+                    detailVC.cryptoModel = cryptoModel[indexPath.item]
+                    if detailVC.cryptoModel.imageData == nil {
+                        CryptoRequest.shared.getImageData(from: detailVC.cryptoModel.iconURL!) { imageData in
+                            detailVC.cryptoModel.imageData = imageData
+                            DispatchQueue.main.async {
+                                self.navigationController?.pushViewController(detailVC, animated: true)
+                            }
+                        }
+                    } else {
+                        navigationController?.pushViewController(detailVC, animated: true)
                     }
                 }
-            } else {
-                navigationController?.pushViewController(detailVC, animated: true)
             }
-        }
-    }
-    
-
+            
+            

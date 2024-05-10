@@ -13,9 +13,6 @@
 		4556AB0C2BE2D09A00FE5425 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4556AB0A2BE2D09A00FE5425 /* Main.storyboard */; };
 		4556AB0E2BE2D09C00FE5425 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4556AB0D2BE2D09C00FE5425 /* Assets.xcassets */; };
 		4556AB112BE2D09C00FE5425 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4556AB0F2BE2D09C00FE5425 /* LaunchScreen.storyboard */; };
-		456662702BED49EB0056FA14 /* SortingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4566626E2BED49EB0056FA14 /* SortingCollectionViewCell.swift */; };
-		456662712BED49EB0056FA14 /* SortingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4566626F2BED49EB0056FA14 /* SortingCollectionViewCell.xib */; };
-		456662732BED68DF0056FA14 /* StatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456662722BED68DF0056FA14 /* StatusModel.swift */; };
 		459015792BE97EC1000943AE /* CryptoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459015782BE97EC1000943AE /* CryptoRequest.swift */; };
 		4590157B2BE97F11000943AE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4590157A2BE97F11000943AE /* Constants.swift */; };
 		4590157D2BE97FC1000943AE /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4590157C2BE97FC1000943AE /* Crypto.swift */; };
@@ -37,9 +34,6 @@
 		4556AB0D2BE2D09C00FE5425 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4556AB102BE2D09C00FE5425 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4556AB122BE2D09C00FE5425 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4566626E2BED49EB0056FA14 /* SortingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingCollectionViewCell.swift; sourceTree = "<group>"; };
-		4566626F2BED49EB0056FA14 /* SortingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortingCollectionViewCell.xib; sourceTree = "<group>"; };
-		456662722BED68DF0056FA14 /* StatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModel.swift; sourceTree = "<group>"; };
 		459015782BE97EC1000943AE /* CryptoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoRequest.swift; sourceTree = "<group>"; };
 		4590157A2BE97F11000943AE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4590157C2BE97FC1000943AE /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
@@ -105,15 +99,6 @@
 			path = Crypto_App;
 			sourceTree = "<group>";
 		};
-		4566626C2BED49B40056FA14 /* SortingCell */ = {
-			isa = PBXGroup;
-			children = (
-				4566626E2BED49EB0056FA14 /* SortingCollectionViewCell.swift */,
-				4566626F2BED49EB0056FA14 /* SortingCollectionViewCell.xib */,
-			);
-			path = SortingCell;
-			sourceTree = "<group>";
-		};
 		459015722BE975DA000943AE /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,7 +113,6 @@
 			children = (
 				4590157C2BE97FC1000943AE /* Crypto.swift */,
 				45E333C32BEC0A7400A2BABE /* CryptoModel.swift */,
-				456662722BED68DF0056FA14 /* StatusModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -146,7 +130,6 @@
 		459015762BE9761B000943AE /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				4566626C2BED49B40056FA14 /* SortingCell */,
 				450ECC242BEAC7A3005D3139 /* CryptoListCell */,
 			);
 			path = Cell;
@@ -231,7 +214,6 @@
 				4556AB112BE2D09C00FE5425 /* LaunchScreen.storyboard in Resources */,
 				45B858762BEACCF000A6FB4D /* CryptoCollectionViewCell.xib in Resources */,
 				45E333CA2BEC2A5400A2BABE /* DetailViewController.xib in Resources */,
-				456662712BED49EB0056FA14 /* SortingCollectionViewCell.xib in Resources */,
 				4556AB0E2BE2D09C00FE5425 /* Assets.xcassets in Resources */,
 				4556AB0C2BE2D09A00FE5425 /* Main.storyboard in Resources */,
 			);
@@ -245,14 +227,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				45E333C92BEC2A5400A2BABE /* DetailViewController.swift in Sources */,
-				456662732BED68DF0056FA14 /* StatusModel.swift in Sources */,
 				45B858792BEAD0C200A6FB4D /* ImageExtension.swift in Sources */,
 				45B858752BEACCF000A6FB4D /* CryptoCollectionViewCell.swift in Sources */,
 				45E333C62BEC0DE600A2BABE /* StringExtension.swift in Sources */,
 				4590157D2BE97FC1000943AE /* Crypto.swift in Sources */,
 				45E333C42BEC0A7400A2BABE /* CryptoModel.swift in Sources */,
 				4590157B2BE97F11000943AE /* Constants.swift in Sources */,
-				456662702BED49EB0056FA14 /* SortingCollectionViewCell.swift in Sources */,
 				459015792BE97EC1000943AE /* CryptoRequest.swift in Sources */,
 				4556AB092BE2D09A00FE5425 /* ViewController.swift in Sources */,
 				4556AB052BE2D09A00FE5425 /* AppDelegate.swift in Sources */,
